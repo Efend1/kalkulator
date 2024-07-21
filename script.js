@@ -115,12 +115,10 @@ clear.addEventListener("click", () => {
 })
 
 backspace.addEventListener("click", () => {
-  firstValue != 0;
-  if (firstValue != 0) {
-    function hapus(){
-      firstValue = hapus.substr(0, firstValue.length - 1);
-      // return firstValue;
-    }
+  let mauDihapus = resultValue;
+  
+  if (mauDihapus != "") {
+    resultValue = mauDihapus.substr(0, mauDihapus.length - 1);
   }
-  result.innerHTML = firstValue;
+  result.innerHTML = resultValue;
 })
