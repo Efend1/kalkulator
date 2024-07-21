@@ -5,6 +5,7 @@ const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
 const negative = document.querySelector('.negative');
 const percent = document.querySelector('.persen');
+const backspace = document.querySelector('.backspace');
 
 
 
@@ -14,7 +15,6 @@ let secondValue = ""
 let isSecondValue = false;
 let sign = "";
 let resultValue = 0;
-
 
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", (e) => {
@@ -112,4 +112,15 @@ clear.addEventListener("click", () => {
   isSecondValue = false;
   sign = "";
   resultValue = 0;
+})
+
+backspace.addEventListener("click", () => {
+  firstValue != 0;
+  if (firstValue != 0) {
+    function hapus(){
+      firstValue = hapus.substr(0, firstValue.length - 1);
+      // return firstValue;
+    }
+  }
+  result.innerHTML = firstValue;
 })
