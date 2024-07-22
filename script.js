@@ -32,7 +32,6 @@ function getFirstValue(el) {
   result.innerHTML = "";
   firstValue += el;
   result.innerHTML = firstValue;
-  firstValue = +firstValue;
 }
 
 function getSecondValue(el) {
@@ -54,29 +53,56 @@ function getSign() {
 
 getSign();
 
+// equals.addEventListener("click", () => {
+//   result.innerHTML = "";
+//   if (sign === "+") {
+//     resultValue = firstValue + secondValue;
+//   } else if (sign === "-") {
+//     resultValue = firstValue - secondValue;
+//   } else if (sign === "x") {
+//     resultValue = firstValue * secondValue;
+//   } else if (sign === "/") {
+//     resultValue = firstValue / secondValue;
+//   }
+//   result.innerHTML = resultValue;
+//   firstValue = resultValue;
+//   secondValue = "";
+  
+//   checkResultLength();
+// })
 equals.addEventListener("click", () => {
   result.innerHTML = "";
-  if (sign === "+") {
-    resultValue = firstValue + secondValue;
-  } else if (sign === "-") {
-    resultValue = firstValue - secondValue;
-  } else if (sign === "x") {
-    resultValue = firstValue * secondValue;
-  } else if (sign === "/") {
-    resultValue = firstValue / secondValue;
+  switch (sign) {
+    case "+":
+      resultValue = parseFloat(firstValue) + parseFloat(secondValue);
+      break;
+    case "-":
+      resultValue = parseFloat(firstValue) - parseFloat(secondValue);
+      break;
+    case "x":
+      resultValue = parseFloat(firstValue) * parseFloat(secondValue);
+      break;
+    case "/":
+      resultValue = parseFloat(firstValue) / parseFloat(secondValue);
+      break;
   }
   result.innerHTML = resultValue;
   firstValue = resultValue;
   secondValue = "";
-  
   checkResultLength();
-})
+});
 
+// function checkResultLength() {
+//   resultValue = JSON.stringify(resultValue);
+//   if (resultValue.length >= 8) {
+//     resultValue = JSON.parse(resultValue);
+//     result.innerHTML = resultValue.toFixed(5);
+//   }
+// }
 function checkResultLength() {
-  resultValue = JSON.stringify(resultValue);
-  if (resultValue.length >= 8) {
-    resultValue = JSON.parse(resultValue);
-    result.innerHTML = resultValue.toFixed(5);
+  if (resultValue.toString().length >= 8) {
+    resultValue = parseFloat(resultValue).toFixed(5);
+    result.innerHTML = resultValue;
   }
 }
 
@@ -115,12 +141,18 @@ clear.addEventListener("click", () => {
 })
 
 backspace.addEventListener("click", () => {
-  let mauDihapus = resultValue;
-  
-  if (mauDihapus != "") {
-    resultValue = mauDihapus.substr(0, mauDihapus.length - 1);
+  let currentDisplay = result.innerHTML;
+  if (currentDisplay.length > 1) {
+    result.innerHTML = currentDisplay.slice(0, -1);
+  } else {
+    result.innerHTML = "0";
   }
-  result.innerHTML = resultValue;
-})
+
+  if (!isFirstValue) {
+    firstValue = result.innerHTML;
+  } else if (isFirstValue && !isSecondValue) {
+    secondValue = result.innerHTML;
+  }
+});
 
 //tes
