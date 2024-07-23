@@ -19,7 +19,7 @@ let resultValue = 0;
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", (e) => {
     let atr = e.target.getAttribute("value");
-    if(isFirstValue === false){
+    if (isFirstValue === false) {
       getFirstValue(atr);
     }
     if (isSecondValue === false) {
@@ -32,7 +32,7 @@ function getFirstValue(el) {
   result.innerHTML = "";
   firstValue += el;
   result.innerHTML = firstValue;
-  firstValue = +firstValue;
+  firstValue = firstValue;
 }
 
 function getSecondValue(el) {
@@ -68,7 +68,7 @@ equals.addEventListener("click", () => {
   result.innerHTML = resultValue;
   firstValue = resultValue;
   secondValue = "";
-  
+
   checkResultLength();
 })
 
@@ -86,7 +86,7 @@ negative.addEventListener("click", () => {
     resultValue = -firstValue;
     firstValue = resultValue;
   }
-  if(firstValue != "" && secondValue != "" && sign != ""){
+  if (firstValue != "" && secondValue != "" && sign != "") {
     resultValue = -resultValue;
   }
   result.innerHTML = resultValue;
@@ -98,7 +98,7 @@ percent.addEventListener("click", () => {
     resultValue = firstValue / 100;
     firstValue = resultValue;
   }
-  if(firstValue != "" && secondValue != "" && sign != ""){
+  if (firstValue != "" && secondValue != "" && sign != "") {
     resultValue = resultValue / 100;
   }
   result.innerHTML = resultValue;
@@ -114,9 +114,11 @@ clear.addEventListener("click", () => {
   resultValue = 0;
 })
 
+
+//logikanya kurang tepatt
 backspace.addEventListener("click", () => {
   let mauDihapus = resultValue;
-  
+
   if (mauDihapus != "") {
     resultValue = mauDihapus.substr(0, mauDihapus.length - 1);
   }
